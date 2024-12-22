@@ -31,12 +31,29 @@ int main() {
     std::string stringBefore,currentString,afterString;
 
     for(int currentRow=0;currentRow<maxRow;currentRow++){
-        if(currentRow>0)
-            stringBefore = vec1[currentRow-1];
-        currentString = vec1[currentRow];
-        if(currentRow!=maxRow-1)
-            afterString = vec1[currentRow+1];
         for(int currentColumn=0;currentColumn<maxColums;currentColumn++){
+            if(vec1[currentRow][currentColumn]=='A'){
+
+                //Check for diagonal '\' MAS
+                if(   currentColumn>0 
+                   && currentRow>0
+                   && currentRow<maxRow-1 
+                   && currentColumn<maxColums-1){
+                    if((vec1[currentRow-1][currentColumn-1]=='M'
+                    && vec1[currentRow+1][currentColumn+1]=='S') ||
+                       (vec1[currentRow-1][currentColumn-1]=='S'
+                    && vec1[currentRow+1][currentColumn+1]=='M')){
+                            if((vec1[currentRow-1][currentColumn+1]=='M'
+                            && vec1[currentRow+1][currentColumn-1]=='S') ||
+                            (vec1[currentRow-1][currentColumn+1]=='S'
+                            && vec1[currentRow+1][currentColumn-1]=='M'))
+                                result++;
+                    }
+                }
+            }
+        }
+    }
+            /* Part 1
             if(vec1[currentRow][currentColumn]=='X'){
                 //Check for backwards horizontal SAMX
                 if(currentColumn>2){
@@ -102,8 +119,7 @@ int main() {
                     result++;
                 }
             }
-        }
-    }
+            */
 
     std::cout << result <<std::endl;
     return 0;
