@@ -36,37 +36,43 @@ int main() {
             }
             else if (rising == vecSize-1){
                 for(int i=0;i<vec1.size()-1;i++){
-                    if(i==0 && vec1[i]>=vec1[i+1]){
-                        vec1.erase(vec1.begin()+i);
+                    if(vec1[i]>vec1[i+1]){
+                        if(i==0){
+                            if(abs(vec1[i]-vec1[i+2])>3)
+                                vec1.erase(vec1.begin()+i);
+                            else   
+                                
+                        }
+                        else if(i==vec1.size()-2){
+
+                        }
+                        else{
+
+                        }
                         break;
                     }
-                    else if(i==vec1.size()-1 && vec1[i]>=vec1[i+1]){
-                       vec1.erase(vec1.begin()+i+1);
-                       break; 
-                    }
-                    else if(vec1[i]>=vec1[i+1]){
-                        vec1.erase(vec1.begin()+i);
+
+                }
+                valueErased = true;
+                for(int i=0;i<vecSize-1;i++){
+                    if(vec1[i]<vec1[i+1]){
+                        safe = false;
                         break;
                     }
                 }
-                valueErased = true;
             }
             else if(falling == vecSize-1){
                 for(int i=0;i<vec1.size()-1;i++){
-                    if(i==0 && vec1[i]<=vec1[i+1]){
-                        vec1.erase(vec1.begin()+i);
-                        break;
-                    }
-                    else if(i==vec1.size()-1 && vec1[i]<=vec1[i+1]){
-                       vec1.erase(vec1.begin()+i+1);
-                       break; 
-                    }
-                    else if(vec1[i]<=vec1[i+1]){
-                        vec1.erase(vec1.begin()+i);
+
+
+                }
+                valueErased = true;
+                for(int i=0;i<vecSize-1;i++){
+                    if(vec1[i]>vec1[i+1]){
+                        safe = false;
                         break;
                     }
                 }
-                valueErased = true;
             }
             else
                 safe = false;
